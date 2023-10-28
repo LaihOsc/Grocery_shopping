@@ -33,8 +33,9 @@ for filename in files:
 
             href = product['href']
 
-            ean = href[len(href) - 13 :]
+            ean = href[len(href) - 13:]
 
+        # Object representation
             # product_object = {
             #     'ean': ean,
             #     'title': title,
@@ -45,10 +46,6 @@ for filename in files:
             final_product[title] = ean
 
 
-with open('data/database2.txt', 'w') as html_doc:
+with open('data/non_categorized_database.txt', 'w') as html_doc:
 
     html_doc.write(json.dumps(final_product))
-
-
-
-

@@ -1,11 +1,11 @@
 import PySimpleGUI as sg
-import os
-from yeet import find_products
-from yeet2 import get_ean_by_name
+from categorized_database_methods import find_products
+from non_categorized_database_methods import get_ean_by_name
 import urllib.request
 from PIL import Image
+
+
 def get_list():
-    query = ''
 
     current = []
 
@@ -15,7 +15,7 @@ def get_list():
         [
             sg.Text('Product name'),
             sg.In(size=(25, 1), enable_events=True, key='-query-'),
-            sg.Button('Search' ,key='-update-')
+            sg.Button('Search', key='-update-')
         ],
         [
             sg.Listbox(
@@ -24,10 +24,10 @@ def get_list():
         ]
     ]
 
-    image_column =[
+    image_column = [
         [sg.Text(size=(40, 1), key="-product_name")],
         [sg.Image(key='-image-', size=(10, 10))],
-        [sg.Button('Add to basket' ,key='-add_to_cart-')]
+        [sg.Button('Add to basket', key='-add_to_cart-')]
     ]
 
     shopping_cart_column = [
@@ -68,11 +68,10 @@ def get_list():
 
             newsize = (300, 300)
             pic = pic.resize(newsize)
-            pic = pic.save("pic.png")
+            pic.save("pic.png")
             window['-image-'].update(filename="pic.png")
 
         if event == '-add_to_cart-':
-
             current.append(values['-product_list-'][0])
             print('yeet', current)
 
@@ -84,9 +83,7 @@ def get_list():
 
         if event == '-show_map-':
             return [get_ean_by_name(item) for item in current]
-            break
 
-
-        if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
+        if event == sg.WIN_CLOSED or event == 'Cancel':  # if user closes window or clicks cancel
             break
     window.close()

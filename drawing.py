@@ -1,8 +1,12 @@
 import turtle
-#Converts x,y coordinates from Photoshop into Turtles coordinates (Like coordinate system in math)
+
+
+# Converts x,y coordinates from Photoshop into Turtles coordinates (Like coordinate system in math)
 def converter(x, y):
-    result = (x-600, 600-y)
+    result = (x - 600, 600 - y)
     return result
+
+
 coordinates = {
     '1': {'x': 214, 'y': 280},
     '2': {'x': 214, 'y': 653},
@@ -20,13 +24,11 @@ coordinates = {
 tr = turtle.Turtle()
 wn = turtle.Screen()
 wn.setup(width=1200, height=1200)
-wn.bgpic("kylis.png")
+wn.bgpic("store.png")
 
 for coord in ['2', '1', '3', '4', '6', '5', '7', '8', '10']:
     tr.setpos(converter(coordinates[coord]['x'], coordinates[coord]['y']))
 
 tr.setpos(converter(940, 1015))
-
-
 
 wn.mainloop()
