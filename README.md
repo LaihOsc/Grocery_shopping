@@ -1,8 +1,6 @@
 # Grocery_shopping
 Python program for creating shopping lists and optimizing routes.
 
-Repo is currently all over the place. 
-
 Use by running main.py
 
 
